@@ -25,6 +25,22 @@ class Blockchain {
   }
 
   createGenesisBlock() {
-    return new Block(0, "09/05/2021");
+    return new Block(0, "09/05/2021", "Genesis block", "0");
+  }
+
+  getLatestBlock() {
+    return this.chain[this.chain.length - 1];
+  }
+
+  addBlock(newBlock) {
+    newBlock.previousHash = this.getLatestBlock().hash;
+    newBlock.hash = newBlock.calculateHash();
+    this.chain.push(newBlock);
   }
 }
+
+let emCoin = new Blockchain();
+emCoin.addBlock(new Block(1, "10/05/2021", { amount: 5 }));
+emCoin.addBlock(new Block(2, "10/05/2021", { amount: 8 }));
+
+console.log(JSON.stringify(emCoin, null, 4));
