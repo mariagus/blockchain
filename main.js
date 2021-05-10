@@ -21,10 +21,10 @@ class Block {
 
 class Blockchain {
   constructor() {
-    this.chain = [];
+    this.chain = [this.createGenesisBlock()];
   }
 
   createGenesisBlock() {
-    return new Block();
+    return new Block(0, "09/05/2021");
   }
 }
