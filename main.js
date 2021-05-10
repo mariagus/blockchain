@@ -14,8 +14,8 @@ class Block {
       this.index +
         this.previousHash +
         this.timestamp +
-        JSON.stringify(this.data).toString()
-    );
+        JSON.stringify(this.data)
+    ).toString();
   }
 }
 
@@ -55,8 +55,10 @@ class Blockchain {
   }
 }
 
-let emCoin = new Blockchain();
-emCoin.addBlock(new Block(1, "10/05/2021", { amount: 5 }));
-emCoin.addBlock(new Block(2, "10/05/2021", { amount: 8 }));
-
-console.log(JSON.stringify(emCoin, null, 4));
+const emCoin = new Blockchain();
+console.log(emCoin);
+emCoin.addBlock(new Block(1, "10/05/2021", { amount: 22 }));
+emCoin.addBlock(new Block(2, "10/05/2021", { amount: 12 }));
+console.log(emCoin);
+console.log(emCoin.isChainValid());
+console.log(JSON.stringify(emCoin));
